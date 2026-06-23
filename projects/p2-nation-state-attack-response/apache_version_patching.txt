@@ -1,0 +1,23 @@
+Apache version identified on the server
+---------------------------------------
+Apache HTTP Server 2.4.7
+
+Configuration file
+------------------
+/etc/apache2/conf-available/security.conf
+
+Required hardening changes
+--------------------------
+ServerTokens Prod
+ServerSignature Off
+
+Validation and activation
+-------------------------
+sudo apache2ctl configtest
+sudo systemctl reload apache2
+curl -I http://127.0.0.1/
+
+Expected result
+---------------
+The HTTP Server header must not expose the detailed Apache version or operating
+system, and generated error pages must not display an Apache version signature.
